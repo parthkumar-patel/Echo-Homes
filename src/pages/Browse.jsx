@@ -1,18 +1,48 @@
 import { useState, useEffect } from "react";
-import "./styles/searchSublet.css";
-import CardComponent from "./CardComponent";
+import { collection, getDocs, getFirestore } from "firebase/firestore";
+import { initializeApp } from "firebase/app";
+import "../styles/browse.css";
+import CardComponent from "../components/CardComponent";
 
 const Browse = () => {
   const [entireData, setentireData] = useState([]);
   const [conditionalData, setconditionalData] = useState([]);
-  const [conditionalDataInActive, setconditionalDataInActive] = useState([]);
-
   const [activeButtons, setActiveButtons] = useState([]);
-  const [priceRange, setPriceRange] = useState(0);
-  const [maxpriceRange, setmaxPriceRange] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const [selectedCity, setSelectedCity] = useState("");
 
-  const [leaseRange, setLeaseRange] = useState(0);
-  const [maxleaseRange, setmaxLeaseRange] = useState(0);
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyAEKCwNSFllLu5zfSPtv2CuG5N-o8agztg",
+    authDomain: "echohouse-a308d.firebaseapp.com",
+    projectId: "echohouse-a308d",
+    storageBucket: "echohouse-a308d.appspot.com",
+    messagingSenderId: "611969960248",
+    appId: "1:611969960248:web:70944b1ef2144ea61559cd",
+    measurementId: "G-0E6X8MF7Q9",
+  };
+
+  initializeApp(firebaseConfig);
+  const db = getFirestore();
+  const colRef = collection(db, "houses");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const snapshot = await getDocs(colRef);
+        let houses = [];
+        snapshot.docs.forEach((doc) => {
+          houses.push({ ...doc.data(), id: doc.id });
+        });
+        setentireData(houses);
+        setconditionalData(houses);
+      } catch (err) {
+        console.log(err.message);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const handleButtonClick = (buttonId) => {
     if (activeButtons.includes(buttonId)) {
@@ -22,125 +52,37 @@ const Browse = () => {
     }
   };
 
-  const handleMaxPriceChange = (e) => {
-    setmaxPriceRange(parseInt(e.target.value));
+  const handleDuration = (e) => {
+    setDuration(parseInt(e.target.value));
   };
 
-  const handleMaxLeaseChange = (e) => {
-    setmaxLeaseRange(parseInt(e.target.value));
-  };
-
-  const handlePriceChange = (e) => {
-    setPriceRange(parseInt(e.target.value));
-  };
-
-  const handleLeaseTermChange = (e) => {
-    setLeaseRange(parseInt(e.target.value));
+  const handleCityChange = (e) => {
+    setSelectedCity(e.target.value);
   };
 
   const handleTheFilter = () => {
-    let filteredData = [...conditionalDataInActive]; // Start with the original data set
+    let filteredData = [...entireData];
 
-    // Determine the primary filter based on the first selected filter
-    const primaryFilter = activeButtons[0];
+    // Check if any filters are selected
+    if (duration !== 0 || activeButtons.length > 0 || selectedCity !== "") {
+      // Filter by duration
+      filteredData = filteredData.filter(
+        (item) => item["duration(months)"] <= duration
+      );
 
-    const sortingFunctions = {
-      Newest: (a, b) => {
-        // Sorting logic for sorting data by newest date
-        // This function compares two objects based on their dateAdding property
-        // and sorts them in descending order (newest first)
-        const datePartsA = a.dateAdding.split("/");
-        const datePartsB = b.dateAdding.split("/");
-        const dateA = new Date(datePartsA[2], datePartsA[1] - 1, datePartsA[0]);
-        const dateB = new Date(datePartsB[2], datePartsB[1] - 1, datePartsB[0]);
-        return dateB - dateA;
-      },
-      Oldest: (a, b) => {
-        // Sorting logic for sorting data by oldest date
-        // This function compares two objects based on their dateAdding property
-        // and sorts them in ascending order (oldest first)
-        const datePartsA = a.dateAdding.split("/");
-        const datePartsB = b.dateAdding.split("/");
-        const dateA = new Date(datePartsA[2], datePartsA[1] - 1, datePartsA[0]);
-        const dateB = new Date(datePartsB[2], datePartsB[1] - 1, datePartsB[0]);
-        return dateA - dateB;
-      },
-      "Lowest Price": (a, b) => {
-        const pricingA = a.pricing[0].monthlyRent;
-        const pricingB = b.pricing[0].monthlyRent;
-        return pricingA - pricingB;
-      },
-      "Highest Price": (a, b) => {
-        const pricingA = a.pricing[0].monthlyRent;
-        const pricingB = b.pricing[0].monthlyRent;
-        return pricingB - pricingA; // Sorting in descending order
-      },
-      "Shortest Lease": (a, b) => {
-        const timePeriodA = a.timePeriod;
-        const timePeriodB = b.timePeriod;
-        return timePeriodA - timePeriodB; // Sorting in descending order
-      },
-      "Longest Lease": (a, b) => {
-        const timePeriodA = a.timePeriod;
-        const timePeriodB = b.timePeriod;
-        return timePeriodB - timePeriodA; // Sorting in descending order
-      },
-      // Define sorting functions for other filters (e.g., Lowest Price, Highest Price, Shortest Lease, etc.)
-    };
-
-    // Apply sorting based on the primary filter
-    if (primaryFilter) {
-      filteredData = filteredData.slice().sort(sortingFunctions[primaryFilter]);
-    }
-
-    // Apply secondary filters if more than one button is active
-    if (activeButtons.length > 1) {
-      // Divide the sorted data into groups of 4 cards
-      const groups = [];
-      for (let i = 0; i < filteredData.length; i += 4) {
-        groups.push(filteredData.slice(i, i + 4));
+      // Filter by roommate preference
+      if (activeButtons.includes("roommate")) {
+        filteredData = filteredData.filter((item) => item.roommate === true);
       }
 
-      // Apply the secondary filters to each group of 4 cards
-      const filteredGroups = groups.map((group) => {
-        // Apply filters other than the primary filter
-        let filteredGroup = group;
-        activeButtons.slice(1).forEach((filter) => {
-          if (sortingFunctions[filter]) {
-            filteredGroup = filteredGroup.sort(sortingFunctions[filter]);
-          }
-        });
-        return filteredGroup;
-      });
-
-      // Combine the filtered groups
-      filteredData = filteredGroups.flat();
+      // Filter by city
+      if (selectedCity) {
+        filteredData = filteredData.filter(
+          (item) =>
+            item.City && item.City.toLowerCase() === selectedCity.toLowerCase()
+        );
+      }
     }
-
-    // Apply additional filtering based on price and lease range
-    if (maxpriceRange != 0) {
-      // Apply additional filtering based on price and lease range
-      filteredData = filteredData.filter(
-        (data) =>
-          data.pricing[0].monthlyRent >= priceRange &&
-          data.pricing[0].monthlyRent <= maxpriceRange
-      );
-    } else {
-      filteredData = filteredData.filter(
-        (data) => data.pricing[0].monthlyRent >= priceRange
-      );
-    }
-    if (maxleaseRange != 0) {
-      filteredData = filteredData.filter(
-        (data) =>
-          data.timePeriod >= leaseRange && data.timePeriod <= maxleaseRange
-      );
-    } else {
-      filteredData = filteredData.filter(
-        (data) => data.timePeriod >= leaseRange
-      );
-    }
-    // Update state with filtered data
 
     setconditionalData(filteredData);
   };
@@ -152,6 +94,7 @@ const Browse = () => {
   return (
     <div className="filteredData">
       <div className="filters">
+        {console.log(conditionalData)}
         <h2
           style={{
             marginLeft: "16px",
@@ -159,7 +102,6 @@ const Browse = () => {
             position: "absolute",
             fontSize: "40px",
             fontFamily: "Quicksand",
-            // textShadow: "1px 1px 2px rgba(0, 0, 0, 0.3)"
           }}
         >
           Filters
@@ -167,32 +109,12 @@ const Browse = () => {
         <button
           type="button"
           className={
-            activeButtons.includes("Newest")
+            activeButtons.includes("roommate")
               ? "btn btn-dark"
               : "btn btn-outline-secondary"
           }
           onClick={() => {
-            handleButtonClick("Newest");
-          }}
-          style={{
-            marginLeft: "10px",
-            marginTop: "20px",
-            position: "relative",
-          }}
-        >
-          {" "}
-          Newest{" "}
-        </button>
-
-        <button
-          type="button"
-          className={
-            activeButtons.includes("Oldest")
-              ? "btn btn-dark"
-              : "btn btn-outline-secondary"
-          }
-          onClick={() => {
-            handleButtonClick("Oldest");
+            handleButtonClick("roommate");
           }}
           style={{
             marginLeft: "10px",
@@ -200,253 +122,82 @@ const Browse = () => {
             position: "absolute",
           }}
         >
-          {" "}
-          Oldest{" "}
+          With roommates
         </button>
 
-        <button
-          type="button"
-          className={
-            activeButtons.includes("Lowest Price")
-              ? "btn btn-dark"
-              : "btn btn-outline-secondary"
-          }
-          onClick={() => {
-            handleButtonClick("Lowest Price");
-          }}
-          style={{
-            marginLeft: "-80px",
-            marginTop: "70px",
-            position: "absolute",
-          }}
-        >
-          {" "}
-          Lowest Price{" "}
-        </button>
-
-        <button
-          type="button"
-          className={
-            activeButtons.includes("Highest Price")
-              ? "btn btn-dark"
-              : "btn btn-outline-secondary"
-          }
-          onClick={() => {
-            handleButtonClick("Highest Price");
-          }}
-          style={{
-            marginLeft: "50px",
-            marginTop: "70px",
-            position: "absolute",
-          }}
-        >
-          {" "}
-          Highest Price{" "}
-        </button>
-
-        <button
-          type="button"
-          className={
-            activeButtons.includes("Shortest Lease")
-              ? "btn btn-dark"
-              : "btn btn-outline-secondary"
-          }
-          onClick={() => {
-            handleButtonClick("Shortest Lease");
-          }}
-          style={{
-            marginLeft: "-80px",
-            marginTop: "120px",
-            position: "absolute",
-          }}
-        >
-          {" "}
-          Shortest Lease{" "}
-        </button>
-
-        <button
-          type="button"
-          className={
-            activeButtons.includes("Longest Lease")
-              ? "btn btn-dark"
-              : "btn btn-outline-secondary"
-          }
-          onClick={() => {
-            handleButtonClick("Longest Lease");
-          }}
-          style={{
-            marginLeft: "-80px",
-            marginTop: "170px",
-            position: "absolute",
-          }}
-        >
-          {" "}
-          Longest Lease{" "}
-        </button>
         <label
           htmlFor="customRange2"
           className="form-label"
           style={{
-            marginTop: "250px",
+            marginTop: "100px",
             position: "absolute",
-            marginLeft: "-80px",
-            fontSize: "15px",
+            marginLeft: "15px",
+            fontSize: "16px",
           }}
         >
-          {" "}
-          Min Price{" "}
+          Length of stay (months)
         </label>
         <label
           htmlFor="customRange2"
           className="form-label"
           style={{
-            marginTop: "255px",
+            marginTop: "110px",
             position: "absolute",
-            marginLeft: "180px",
+            marginLeft: "290px",
             fontSize: "15px",
           }}
         >
-          {" "}
-          {priceRange}{" "}
+          {duration}
         </label>
 
-        <input
-          type="range"
-          className="form-range"
-          min="0"
-          max="1000"
-          id="customRange2"
-          onChange={handlePriceChange}
-          style={{
-            maxInlineSize: "300px",
-            marginTop: "275px",
-            marginLeft: "-80px",
-            position: "absolute",
-          }}
-        />
-
-        <label
-          htmlFor="customRange2"
-          className="form-label"
-          style={{
-            marginTop: "320px",
-            position: "absolute",
-            marginLeft: "-80px",
-            fontSize: "15px",
-          }}
-        >
-          {" "}
-          Max Price{" "}
-        </label>
-        <label
-          htmlFor="customRange2"
-          className="form-label"
-          style={{
-            marginTop: "320px",
-            position: "absolute",
-            marginLeft: "180px",
-            fontSize: "15px",
-          }}
-        >
-          {" "}
-          {maxpriceRange}{" "}
-        </label>
-        <input
-          type="range"
-          className="form-range"
-          min="0"
-          max="3000"
-          id="customRange2"
-          onChange={handleMaxPriceChange}
-          style={{
-            maxInlineSize: "300px",
-            marginTop: "342px",
-            marginLeft: "-80px",
-            position: "absolute",
-          }}
-        />
-
-        <label
-          htmlFor="customRange2"
-          className="form-label"
-          style={{
-            marginTop: "415px",
-            position: "absolute",
-            marginLeft: "-80px",
-            fontSize: "15px",
-          }}
-        >
-          {" "}
-          Min Lease Range{" "}
-        </label>
-        <label
-          htmlFor="customRange2"
-          className="form-label"
-          style={{
-            marginTop: "415px",
-            position: "absolute",
-            marginLeft: "180px",
-            fontSize: "15px",
-          }}
-        >
-          {" "}
-          {leaseRange}{" "}
-        </label>
-        <input
-          type="range"
-          className="form-range"
-          min="0"
-          max="11"
-          id="customRange2"
-          onChange={handleLeaseTermChange}
-          style={{
-            maxInlineSize: "300px",
-            marginTop: "438px",
-            marginLeft: "-80px",
-            position: "absolute",
-          }}
-        />
-
-        <label
-          htmlFor="customRange2"
-          className="form-label"
-          style={{
-            marginTop: "468px",
-            position: "absolute",
-            marginLeft: "-80px",
-            fontSize: "15px",
-          }}
-        >
-          {" "}
-          Max Lease Range{" "}
-        </label>
-        <label
-          htmlFor="customRange2"
-          className="form-label"
-          style={{
-            marginTop: "468px",
-            position: "absolute",
-            marginLeft: "180px",
-            fontSize: "15px",
-          }}
-        >
-          {" "}
-          {maxleaseRange}{" "}
-        </label>
         <input
           type="range"
           className="form-range"
           min="0"
           max="12"
           id="customRange2"
-          onChange={handleMaxLeaseChange}
+          onChange={handleDuration}
+          value={duration} // Added value attribute to set the initial value
           style={{
-            maxInlineSize: "300px",
-            marginTop: "490px",
-            marginLeft: "-80px",
+            width: "300px",
+            marginTop: "140px",
+            marginLeft: "15px",
             position: "absolute",
           }}
         />
+
+        <label
+          htmlFor="cityFilter"
+          className="form-label"
+          style={{
+            marginTop: "200px",
+            position: "absolute",
+            marginLeft: "15px",
+            fontSize: "16px",
+          }}
+        >
+          City
+        </label>
+        {console.log(entireData)}
+        <select
+          id="cityFilter"
+          className="form-select"
+          onChange={handleCityChange}
+          style={{
+            marginTop: "230px",
+            marginLeft: "15px",
+            position: "absolute",
+            width: "200px",
+          }}
+        >
+          <option value="">Select a city</option>
+          <option value="toronto">Toronto</option>
+          <option value="new york">New York</option>
+          <option value="vancouver">Vancouver</option>
+          <option value="houston">Houston</option>
+          <option value="miami">Miami</option>
+          <option value="san francisco">San Francisco</option>
+        </select>
 
         <button
           type="button"
@@ -454,21 +205,25 @@ const Browse = () => {
           onClick={handleTheFilter}
           style={{
             width: "300px",
-            marginLeft: "-80px",
             marginTop: "565px",
             position: "absolute",
-            weight: "bold",
+            fontWeight: "bold",
           }}
         >
-          {" "}
-          Apply Filters{" "}
+          Apply Filters
         </button>
       </div>
       <div className="cards">
-        <section className="cards-lists">{cards}</section>
+        {conditionalData.length > 0 ? (
+          <section className="cards-lists">{cards}</section>
+        ) : (
+          <p className="card-text">No matching houses found.</p>
+        )}
       </div>
     </div>
   );
 };
 
 export default Browse;
+
+// Styles remain unchanged
