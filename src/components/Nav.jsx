@@ -20,20 +20,26 @@ export default function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg shadow-sm sticky-top p-3 bg-white">
       <div className="container">
-        <Link to="/" className="navbar-brand">
+        <Link to="/" className="navbar-brand" style={{
+              textDecoration: "none",
+            }}>
           <img
             src={echoLogo}
             alt="Logo"
-            width="180"
-            height="90  "
+            width="150"
+            height="60"
             className="d-inline-block align-text-top me-2"
+            
           />
         </Link>
 
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
          
           
-          <Link to="/about-us" className="navbar">
+          <Link to="/about-us" className="navbar" style={{
+              textDecoration: "none", 
+              color: "#095023",
+            }}>
             <img
               src="/"
               alt="About Us"
@@ -53,7 +59,11 @@ export default function Navbar() {
           </Link>
 
                
-          <Link to="/about-us" className="navbar">
+          <Link to="/about-us" className="navbar" style={{
+              textDecoration: "none",
+              color: "#095023",
+              
+            }}>
             <img
               src="/"
               alt="FAQ"
@@ -72,7 +82,10 @@ export default function Navbar() {
             />
           </Link>
 
-          <Link to="/browse" className="navbar">
+          <Link to="/browse" className="navbar" style={{
+              textDecoration: "none",
+              color: "#095023",
+            }}>
             <img
               src="/browse"
               alt="Browse"
