@@ -1,15 +1,21 @@
+import Contact from "../components/Contact";
 import "../styles/about.css";
 
 const AboutUs = () => {
   return (
-    <div className="aboutUs-container">
-      <div className="book">
-        <p>Hello</p>
-        <div className="cover">
-          <p>About Us</p>
+    <>
+      <div className="aboutUs-container">
+        <div className="book">
+          <p>Hello</p>
+          <div className="cover">
+            <p>About Us</p>
+          </div>
         </div>
       </div>
-    </div>
+      <div className="contact-container">
+        <Contact />
+      </div>
+    </>
   );
 };
 
