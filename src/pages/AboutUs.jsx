@@ -1,3 +1,4 @@
+import Contact from "../components/Contact";
 import "../styles/about.css";
 
 const AboutUs = () => {
@@ -22,6 +23,7 @@ const AboutUs = () => {
         </div>
       </div>
       <div className="contact-container">
+        <Contact />
       </div>
     </>
   );
