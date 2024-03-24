@@ -1,0 +1,41 @@
+.btn-outline-secondary:hover {
+  transition: 0.6s;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+.btn-btn-dark:hover {
+  transition: 1s;
+  padding-right: 10px;
+}
+
+.filteredData {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.filters {
+  flex: 1;
+  padding-left: 16px;
+  padding-right: 64px;
+  padding-top: 100px;
+  height: 100vh;
+  box-shadow: 1.5rem -5rem 4rem rgba(0, 0, 0, 0.1); /* intense shadow */
+  z-index: 2;
+  max-width: 25%;
+}
+
+.cards {
+  flex: 4;
+  background-color: #f2f2f2;
+  flex-wrap: wrap;
+  padding-left: 70px;
+}
+
+.cards-lists {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin-top: 30px;
+  max-width: 100%;
+  flex-wrap: wrap;
+}
