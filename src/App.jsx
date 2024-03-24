@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import { AuthContextProvider } from "./context/AuthContext";
 import Home from "./pages/Home";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
