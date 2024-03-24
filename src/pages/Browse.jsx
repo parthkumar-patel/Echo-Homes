@@ -226,4 +226,3 @@ const Browse = () => {
 
 export default Browse;
 
-// Styles remain unchanged
