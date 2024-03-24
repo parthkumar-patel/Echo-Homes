@@ -34,7 +34,7 @@ const HomeListing = ({ listing }) => {
         </div>
         </div>
         <div className="reviews">
-          <h3>Reviews</h3>
+          <h4>Reviews</h4>
           {listing.reviews.map((review, index) => (
             <div key={index} className="review">
               <p>{review.comment}</p>
