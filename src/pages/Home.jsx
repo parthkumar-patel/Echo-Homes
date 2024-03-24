@@ -1,4 +1,3 @@
-import Galary from "../components/Galary";
 
 const Home = () => {
   return (
@@ -8,4 +7,6 @@ const Home = () => {
   );
 };
 
+
 export default Home;
+  

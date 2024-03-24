@@ -1,0 +1,146 @@
+:root {
+    /* Colors */
+    --teal-color: #009688;
+    --teal-light: #E0F2F1;
+    --deep-orange: #FF5722;
+    --light-grey: #FAFAFA;
+    --text-color: #333;
+    --text-color-light: #00796B;
+    --border-color: #ccc;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+  
+    /* Spacing */
+    --default-padding: 16px;
+    --default-margin: 16px;
+  
+    /* Border */
+    --border-radius: 8px;
+    --border-style: 1px solid var(--border-color);
+  
+    /* Typography */
+    --font-family: 'Verdana', sans-serif;
+  }
+  
+  .listing-container {
+    max-width: 800px;
+    margin: var(--default-margin) auto;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 2px 4px var(--shadow-color);
+    background-color: var(--light-grey);
+    text-align: left;
+  }
+  
+  .listing-container h2,
+  .listing-container h3 {
+    margin: 0;
+    padding: var(--default-padding);
+    color: var(--text-color);
+    font-family: var(--font-family);
+  }
+  
+  .main {
+    display: block;
+    justify-content: space-between;
+    margin: var(--default-margin) 0;
+  }
+  
+  .photos {
+    display: flex;
+    overflow-x: auto;
+    padding: var(--default-padding);
+    background-color: var(--teal-light);
+  }
+  
+  .photos img {
+    border-radius: 4px;
+    margin-right: var(--default-margin);
+    box-shadow: 0 2px 2px var(--shadow-color);
+    height: 300px;
+    width: 500px;
+  }
+  
+  .details_amenities {
+    display: flex;
+    justify-content: flex-start;
+    margin: 8px 0;
+    align-items: flex-start;
+    gap: 10px;
+    margin-left: 280px;
+  }
+  
+  .description, .details, .amenities, .reviews {
+    padding: var(--default-padding);
+    color: var(--text-color);
+    line-height: 1.5;
+  }
+  
+  .description p, .details p, .reviews div {
+    margin: 8px 0;
+  }
+  
+  .amenities ul {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    align-items: flex-start;
+  }
+  
+  .amenities li {
+    margin: 4px 0;
+    padding-left: 20px;
+    color: var(--text-color-light);
+  }
+  
+  .amenities li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--deep-orange);
+  }
+
+  .reviews {
+    margin-left: 150px auto;
+    background-color: #f0f0f0; /* Light grey background, similar to a textbox */
+    border-radius: 4px; /* Slightly rounded corners for a modern look */
+    padding: 16px; /* Space inside the box */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow to make it "pop" */
+    max-width: 600px; /* Narrows the width of the box for better readability */
+    margin: 16px auto;
+  }
+  
+  .review {
+    background-color: #f0f0f0; /* Light grey background, similar to a textbox */
+    border: 1px solid #ccc; /* Light grey border */
+    border-radius: 4px; /* Slightly rounded corners for a modern look */
+    padding: 16px; /* Space inside the box */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow to make it "pop" */
+    max-width: 600px; /* Narrows the width of the box for better readability */
+    margin: 16px auto;
+  }
+  
+  .review:not(:last-child) {
+    margin-bottom: 16px; /* Ensures space between consecutive review boxes */
+  }
+  
+  .review p {
+    margin: 4px 0; /* Spacing between paragraphs within the review */
+  }
+  
+  .review p:last-child {
+    font-style: italic;
+    color: #00796B; /* Gives a unique style to the last paragraph, possibly for emphasis or as a signature */
+  }
+  
+  /* Responsiveness */
+  @media (max-width: 768px) {
+    .photos img {
+      width: 100%; /* Makes image responsive */
+      height: auto;
+    }
+  
+    .details_amenities, .amenities ul {
+      flex-direction: column; /* Adjusts layout for smaller screens */
+    }
+  }
+  
