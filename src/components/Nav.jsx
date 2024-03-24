@@ -2,9 +2,7 @@ import { Link } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 // import Logo from "../assets/logo.png";
 // import DefaultProfile from "../assets/default.png";
-import "../styles/Nav.css";
-import logo from "../images/echohome.png";
-import faq from "../images/FAQ.png";
+import "../styles/nav.css";
 
 import echoLogo from "../images/echohome.png";
 
