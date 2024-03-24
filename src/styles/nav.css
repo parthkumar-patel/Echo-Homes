@@ -1,69 +1,73 @@
-/* Updated navbar and link styling without the blue hyperlink look */
+/* General navbar improvements for better visual appeal */
 .navbar {
-  background-color: #f8f9fa; /* Light grey background for a subtle distinction from the white page */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for a sense of depth */
-  padding: 0.5rem 1rem; /* Adjusted padding for optimal spacing */
+  background-color: #f8f9fa; /* Light grey background to subtly stand out from the white page */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  padding: 0.5rem 1rem; /* Adjust padding for better spacing */
 }
 
-.navbar-brand, .nav-link {
-  color: #555; /* Uniform, darker text color for better readability and contrast */
-  font-weight: bold; /* Emphasize the brand and links slightly with bold weight */
+.navbar-brand {
+  color: #007bff; /* Bright blue for brand name to make it pop */
+  font-weight: bold; /* Make the brand name stand out */
+}
+
+.nav-link {
+  color: #555; /* Darker text for better contrast */
+  margin-right: 1rem; /* Space out nav items */
 }
 
 .nav-link:hover, .nav-link:focus {
-  color: #333; /* Darker shade for interactive feedback without using blue */
-  text-decoration: none; /* Remove underline to avoid the classic hyperlink look */
+  color: #007bff; /* Highlight links on hover/focus with brand color */
 }
 
-/* Input group and search button styling with cohesive color scheme */
+/* Input group and search button styling */
 .input-group {
   position: relative;
-  left: auto; /* Adjust left positioning for better alignment */
-  transform: translateX(-50%); /* Center align the input group effectively */
+  left: auto; /* Reset left positioning for better alignment */
+  transform: translateX(-50%); /* Center align the input group */
 }
 
 #search-button {
-  background-color: #777; /* Neutral button background color */
-  color: #fff; /* White text for clear contrast */
-  border: none; /* Eliminate the default border */
+  background-color: #007bff; /* Brand color for button */
+  color: #fff; /* White text for contrast */
+  border: none; /* Remove default border */
 }
 
 #search-button:hover {
-  background-color: #555; /* Slightly darker background on hover for a subtle effect */
+  background-color: #0056b3; /* Darker shade on hover for interaction feedback */
 }
 
-/* Dropdown menu styling aligned with the overall color scheme */
+/* Dropdown menu styling for better visibility */
 .dropdown-menu {
-  background-color: #fff; /* Maintain a white background for clarity */
-  border: 1px solid #ddd; /* Soft, light border for subtle separation */
-  border-radius: 0.25rem; /* Gentle corner rounding for a modern look */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Mild shadow for depth */
+  background-color: #fff; /* Ensure dropdown is white */
+  border: 1px solid #ddd; /* Light border for definition */
+  border-radius: 0.25rem; /* Soften the corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
 .dropdown-item {
-  color: #555; /* Consistent text color for dropdown items */
+  color: #333; /* Slightly darker color for readability */
 }
 
 .dropdown-item:hover, .dropdown-item:focus {
-  background-color: #f8f9fa; /* Light grey background for item interaction */
-  color: #333; /* Slightly darker text for contrast */
+  background-color: #f8f9fa; /* Light grey background on hover/focus */
+  color: #007bff; /* Brand color for text */
 }
 
-/* Responsive adjustments for a cohesive mobile experience */
+/* Adjustments for responsive design */
 @media (max-width: 992px) {
   .navbar {
-    padding: 0.5rem; /* Tailored padding for smaller screens */
+    padding: 0.5rem; /* Reduce padding on smaller screens */
   }
 
   .input-group {
-    transform: none; /* Reset transformation for mobile layouts */
-    width: 100%; /* Ensure full width on smaller screens */
-    margin-top: 0.5rem; /* Adequate spacing from navbar elements */
+    transform: none; /* Reset transformation for mobile */
+    width: 100%; /* Full width for mobile */
+    margin-top: 0.5rem; /* Space from navbar items */
   }
 
   #search-button, #search-input {
-    width: 100%; /* Full width for both input and button on mobile */
+    width: 100%; /* Full width for inputs on mobile */
   }
 }
 
-/* Further responsive design adjustments can be tailored as needed */
+/* Additional media queries can be adjusted based on specific layout needs */

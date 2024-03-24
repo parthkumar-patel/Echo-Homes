@@ -43,7 +43,6 @@ export default function Navbar() {
                 backgroundColor: "#f2f2f2",
                 scale: "0.83",
                 backgroundRepeat: "no-repeat",
-                border: "#d8d8d8 solid",
                 borderRadius: "10px",
                 padding: "8px",
                 marginBlock: "-8px",
@@ -64,7 +63,6 @@ export default function Navbar() {
                 backgroundColor: "#f2f2f2",
                 scale: "0.83",
                 backgroundRepeat: "no-repeat",
-                border: "#d8d8d8 solid",
                 borderRadius: "10px",
                 padding: "8px",
                 marginBlock: "-8px",
@@ -84,11 +82,11 @@ export default function Navbar() {
                 backgroundColor: "#f2f2f2",
                 scale: "0.83",
                 backgroundRepeat: "no-repeat",
-                border: "#d8d8d8 solid",
                 borderRadius: "10px",
                 padding: "8px",
                 marginBlock: "-8px",
                 marginRight: "2px",
+                textDecoration: "none", 
               }}
             />
           </Link>
