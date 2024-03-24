@@ -1,4 +1,4 @@
-import "../HomeListing.css";
+import "../styles/HomeListing.css";
 import listing from "./listingExample";
 
 const HomeListing = () => {
