@@ -1,6 +1,18 @@
+import HomeListing from "../pages/HomeListing";
 import "../styles/card.css";
+import { useState } from "react";
 
 export default function CardComponent(prop) {
+  const [showHomeListing, setShowHomeListing] = useState(false);
+
+  const handleDesc = () => {
+    setShowHomeListing((prevState) => !prevState); // Toggle the state
+  };
+
+  const handleClose = () => {
+    setShowHomeListing(false);
+  };
+
   return (
     <div className="image-container">
       <div
@@ -13,6 +25,7 @@ export default function CardComponent(prop) {
             <div
               key={index}
               className={`carousel-item ${index === 0 ? "active" : ""}`}
+              onClick={handleDesc} // Toggle HomeListing display
             >
               <img src={room} className="d-block" alt="pic" />
             </div>
@@ -52,6 +65,9 @@ export default function CardComponent(prop) {
           <b>Contact No. -</b> {prop.item.contact}
         </p>
       </div>
+      {showHomeListing && (
+        <HomeListing item={prop.item} onClose={handleClose} />
+      )}
     </div>
   );
 }
