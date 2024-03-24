@@ -1,8 +1,9 @@
-import '../styles/ListingTemplate.css';
+import "../styles/HomeListing.css";
+import listing from "./listingExample";
 
-const HomeListing = ({ listing }) => {
-    return (
-        <div className='main'> 
+const HomeListing = () => {
+  return (
+    <div className="main">
       <div className="listing-container">
         <h2>{listing.title}</h2>
         <div className="photos">
@@ -13,8 +14,8 @@ const HomeListing = ({ listing }) => {
         <div className="description">
           <p>{listing.description}</p>
         </div>
-        </div>
-        <div className='details_amenities'> 
+      </div>
+      <div className="details_amenities">
         <div className="details">
           <h3>Details</h3>
           <p>Location: {listing.location}</p>
@@ -32,19 +33,19 @@ const HomeListing = ({ listing }) => {
             ))}
           </ul>
         </div>
-        </div>
-        <div className="reviews">
-          <h4>Reviews</h4>
-          {listing.reviews.map((review, index) => (
-            <div key={index} className="review">
-              <p>{review.comment}</p>
-              <p>Rating: {review.rating}</p>
-            </div>
-          ))}
-        </div>
       </div>
-    );
-  };
-  
-  export default HomeListing;
+      <div className="reviews">
+        <h3>Reviews</h3>
+        {listing.reviews.map((review, index) => (
+          <div key={index} className="review">
+            <p>{review.comment}</p>
+            <p>Rating: {review.rating}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default HomeListing;
 

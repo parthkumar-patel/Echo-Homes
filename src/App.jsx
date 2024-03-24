@@ -11,8 +11,7 @@ import AboutUs from "./pages/AboutUs";
 import Navbar from "./components/Nav";
 import Browse from "./pages/Browse";
 import Onboarding from "./pages/Onboarding";
-import listingExample from "./pages/listingExample";
-import HomeListing from "./pages/ListingTemplate";
+import HomeListing from "./pages/HomeListing";
 
 function App() {
   return (
@@ -26,7 +25,7 @@ function App() {
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/browse" element={<Browse />} />
         <Route path="/onboarding" element={<Onboarding />} />
-        <Route path="/example" element={<HomeListing listing={listingExample} />} />
+        <Route path="/desc" element={<HomeListing />} />
       </Routes>
     </AuthContextProvider>
   );

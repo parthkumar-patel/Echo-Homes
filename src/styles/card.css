@@ -109,3 +109,14 @@
   height: 85%;
   font-size: 48px;
 }
+
+.contact-info {
+  margin-top: -10px;
+  margin-left: 30px;
+
+  background-color: #f4f4f4; /* Add a light background color */
+  border-radius: 0 0 10px 10px; /* Rounded corners at the bottom */
+  text-align: left; /* Center the text */
+  font-size: 16px; /* Adjust the font size */
+  color: #333; /* Set text color */
+}

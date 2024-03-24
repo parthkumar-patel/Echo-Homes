@@ -1,9 +1,7 @@
 
-import HomeTemplate from "./ListingTemplate";
 import  bedroomCabin from "../images/bedroom_cabin.jpg";
 import frontCabin from "../images/front_mountain_cabin.jpg";
 import kitchenCabin from "../images/kitchen_cabin.jpg";
-import Navbar from "../components/Nav";
 
 
 const listingExample = {
@@ -20,8 +18,7 @@ const listingExample = {
   stayLength: "2 months", 
   roomates: "Yes",
   maxGuests: 4, // bedrooms
-  amenities: ["Wi-Fi", "Kitchen", "Parking",  "Heating", "Fire", "Stove", "Gas"],
-  roommates: "Yes",
+  amenities: ["Wi-Fi", "Kitchen", "Parking",  "Heating"],
   reviews: [
     { comment: "I loved the views here, would recommend!", rating: 5 },
     { comment: "Almost died to a bear but it had a nice view!", rating: 3 },
