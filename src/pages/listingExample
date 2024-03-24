@@ -1,5 +1,5 @@
 
-import HomeTemplate from "./HomeTemplate";
+import HomeTemplate from "./ListingTemplate";
 import  bedroomCabin from "../images/bedroom_cabin.jpg";
 import frontCabin from "../images/front_mountain_cabin.jpg";
 import kitchenCabin from "../images/kitchen_cabin.jpg";
