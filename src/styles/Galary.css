@@ -15,13 +15,13 @@ small {
 .Sentences{
   position: flex;
   justify-content: left;
-  font-size: 100px; /* Adjust font size */
+  font-size: 40px; /* Adjust font size */
   font-style: italic; /* Adjust font style */
   font-weight: bold; /* Adjust font weight */
   text-align: left; /* Adjust text alignment */
   margin-top: 30px; /* Adjust top margin */
   margin-left: 30px; /* Adjust top margin */
-  font-family: Fantasy, "Helvetica Neue", Arial, sans-serif; 
+  font-family: Cursive, "Helvetica Neue", Arial, sans-serif; 
 }
 
 
@@ -32,7 +32,7 @@ small {
   font-style: italic; /* Adjust font style */
   font-weight: bold; /* Adjust font weight */
   text-align: left; /* Adjust text alignment */
-  margin-top: 30px; /* Adjust top margin */
+  margin-top: 100px; /* Adjust top margin */
   margin-left: 30px; /* Adjust top margin */
   font-family: Fantasy, "Helvetica Neue", Arial, sans-serif; 
 }
@@ -51,6 +51,7 @@ small {
 .button{
   position: flex;
   justify-content: left;
+  text-align: left; 
   margin-top: 30px; /* Adjust top margin */
   margin-left: 30px; /* Adjust top margin */
 }

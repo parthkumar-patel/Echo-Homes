@@ -15,7 +15,7 @@ export default function Galary() {
       <div className="col-lg-6 col-md-6 mb-4 mb-lg-0">
       <div className="Container">
         <h1 className= "Name">Echohomes</h1>
-        <h classname= "Sentences">"Discover New Homes, Swap Your Way Around the World!" </h>
+        <h2 className= "Sentences">"Discover New Homes, Swap Your Way Around the World!"</h2>
         <h3 className= "description">Unlock the Power of Community: Our Home Exchange Network Welcomes All. Share Homes and Stay for $0/Nightly.</h3>
         <Link to="/login" className="btn">
         <div className="button">
