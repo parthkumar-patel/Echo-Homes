@@ -1,10 +1,11 @@
 import Navbar from "../components/Nav";
+import Galary from "../components/Galary";
 
 const Home = () => {
   return (
     <div className="text-center">
       <Navbar />
-      Home Page
+      <Galary/>
     </div>
   );
 };
