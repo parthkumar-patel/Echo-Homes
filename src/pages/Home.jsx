@@ -1,5 +1,11 @@
+import Galary from "../components/Galary";
+
 const Home = () => {
-  return <div className="text-center">Home Page</div>;
+  return (
+    <div className="text-center">
+      <Galary />
+    </div>
+  );
 };
 
 export default Home;
