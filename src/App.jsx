@@ -10,8 +10,8 @@ import ForgotPassword from "./pages/ForgotPassword";
 import AboutUs from "./pages/AboutUs";
 import Navbar from "./components/Nav";
 import Browse from "./pages/Browse";
-import Onboarding from "./pages/Onboarding";
-import HomeListing from "./pages/HomeListing";
+import Onboarding from "./pagespages/Onboarding";
+import HomeListing from ".//HomeListing";
 
 function App() {
   return (
