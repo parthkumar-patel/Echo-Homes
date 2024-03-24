@@ -4,12 +4,18 @@ import Home from "./pages/Home";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./scss/styles.scss";
+import LogIn from "./pages/LogIn";
+import SignUp from "./pages/SignUp";
+import ForgotPassword from "./pages/ForgotPassword";
 
 function App() {
   return (
     <AuthContextProvider>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/login" element={<LogIn />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
       </Routes>
     </AuthContextProvider>
   );
