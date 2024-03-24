@@ -1,4 +1,4 @@
-import '../HomeListing.css';
+import '../styles/ListingTemplate.css';
 
 const HomeListing = ({ listing }) => {
     return (

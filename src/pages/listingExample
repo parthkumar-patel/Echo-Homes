@@ -20,7 +20,8 @@ const listingExample = {
   stayLength: "2 months", 
   roomates: "Yes",
   maxGuests: 4, // bedrooms
-  amenities: ["Wi-Fi", "Kitchen", "Parking",  "Heating"],
+  amenities: ["Wi-Fi", "Kitchen", "Parking",  "Heating", "Fire", "Stove", "Gas"],
+  roommates: "Yes",
   reviews: [
     { comment: "I loved the views here, would recommend!", rating: 5 },
     { comment: "Almost died to a bear but it had a nice view!", rating: 3 },
