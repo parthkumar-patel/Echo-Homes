@@ -5,29 +5,25 @@ import imgv1 from "../images/imgv1.jpg";
 import imgv2 from "../images/imgv2.jpeg";
 import imgv3 from "../images/imgv3.jpg";
 import "../styles/Galary.css";
+import { Link } from "react-router-dom";
 
 export default function Galary() {
   return (
-    <div className="Container">
-      <section className="self-center md:-translate-y-8 2xl:-translate-y-20">
-        <h1 className="typs-heading-hero">
-          Swap homes &amp; travel <i className="italic">freely</i>
-        </h1>
-        <h5 className="typs-body-1 mt-6 text-secondary md:max-w-full md:pe-12 xl:pe-72 2xl:pe-96">
-          Members-only home exchange network, powered by close community. Share
-          homes and travel for $0/nightly.
-        </h5>
-        <div className="mt-6 flex flex-row items-center gap-x-5">
-          <a
-            className='font-inter flex shrink-0 items-center justify-center rounded-full duration-150 disabled:pointer-events-none disabled:cursor-not-allowed whitespace-pre font-semibold border border-transparent bg-button-primary text-button-primary hover:bg-button-primary-hover active:bg-button-primary-hover disabled:bg-button-primary-disabled disabled:text-overlay data-[disabled="true"]:bg-button-primary-disabled data-[disabled="true"]:text-overlay min-w-20 px-5 py-2 text-s13 lg:px-7 lg:py-3 lg:text-s16 cursor-pointer'
-            href="/onboarding"
-          >
-            Apply now
-          </a>
-          <h3 className="typs-caption-3">Renters &amp; owners welcome</h3>
+    
+    <div className="row">
+      
+      <div className="col-lg-6 col-md-6 mb-4 mb-lg-0">
+      <div className="Container">
+        <h1 className= "Name">Echohomes</h1>
+        <h classname= "Sentences">"Discover New Homes, Swap Your Way Around the World!" </h>
+        <h3 className= "description">Unlock the Power of Community: Our Home Exchange Network Welcomes All. Share Homes and Stay for $0/Nightly.</h3>
+        <Link to="/login" className="btn">
+        <div className="button">
+          <button type="button" class="btn btn-dark">Sign up</button>
         </div>
-      </section>
-      <div className="row">
+        </Link>
+      </div>
+      </div>
         <div className="col-lg-3 col-md-3 mb-4 mb-lg-0">
           <img
             src={imgh1}
@@ -68,6 +64,5 @@ export default function Galary() {
           />
         </div>
       </div>
-    </div>
   );
 }

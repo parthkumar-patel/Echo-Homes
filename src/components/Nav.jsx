@@ -2,7 +2,9 @@ import { Link } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 // import Logo from "../assets/logo.png";
 // import DefaultProfile from "../assets/default.png";
-import "../styles/nav.css";
+import "../styles/Nav.css";
+import logo from "../images/echohome.png";
+import faq from "../images/FAQ.png";
 
 export default function Navbar() {
   const { user, logOut } = UserAuth();
@@ -18,34 +20,27 @@ export default function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg shadow-sm sticky-top p-3 bg-white">
       <div className="container">
-        <Link to="/" className="navbar-brand">
+        <div className="logo">
+          <Link to="/" className="navbar-brand">
           <img
-            src="/"
+            src={logo}
             alt="Logo"
-            width="30"
-            height="24"
-            className="d-inline-block align-text-top me-2"
+            width="150"
+            height="70"
+            className="d-inline-block align-text-top me-5"
           />
-          Echo Homes
-        </Link>
+          </Link>
+        </div>
 
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <Link to="/Fav" className="navbar">
             <img
-              src="/"
+              src={faq}
               alt="Fav"
-              className="d-inline-block align-text-top ms-2"
+              width="50"
+              height="50"
+              className="d-inline-block align-text-top me-5"
               id="favid"
-              style={{
-                backgroundColor: "#f2f2f2",
-                scale: "0.83",
-                backgroundRepeat: "no-repeat",
-                border: "#d8d8d8 solid",
-                borderRadius: "10px",
-                padding: "8px",
-                marginBlock: "-8px",
-                marginRight: "2px",
-              }}
             />
           </Link>
         </div>

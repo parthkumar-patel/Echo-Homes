@@ -3,43 +3,54 @@
   justify-content: right;
 }
 
-.container {
-  font-family: "Amethysta";
-}
 
 .typs-heading-hero {
   font-weight: 400;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5 {
-  font-family: "Amethysta";
-  font-weight: 700;
-}
-
-h1 {
-  font-size: 4.21rem; /* 67.36px */
-}
-
-h2 {
-  font-size: 3.158rem; /* 50.56px */
-}
-
-h3 {
-  font-size: 2.369rem; /* 37.92px */
-}
-
-h4 {
-  font-size: 1.777rem; /* 28.48px */
-}
-
-h5 {
-  font-size: 1.333rem; /* 21.28px */
-}
-
 small {
   font-size: 0.75rem; /* 12px */
+}
+
+.Sentences{
+  position: flex;
+  justify-content: left;
+  font-size: 100px; /* Adjust font size */
+  font-style: italic; /* Adjust font style */
+  font-weight: bold; /* Adjust font weight */
+  text-align: left; /* Adjust text alignment */
+  margin-top: 30px; /* Adjust top margin */
+  margin-left: 30px; /* Adjust top margin */
+  font-family: Fantasy, "Helvetica Neue", Arial, sans-serif; 
+}
+
+
+.Name{
+  position: flex;
+  justify-content: left;
+  font-size: 100px; /* Adjust font size */
+  font-style: italic; /* Adjust font style */
+  font-weight: bold; /* Adjust font weight */
+  text-align: left; /* Adjust text alignment */
+  margin-top: 30px; /* Adjust top margin */
+  margin-left: 30px; /* Adjust top margin */
+  font-family: Fantasy, "Helvetica Neue", Arial, sans-serif; 
+}
+
+
+.description{
+  position: flex;
+  font-size: 18px; /* Adjust font size */
+  font-style: italic; /* Adjust font style */
+  text-align: left; /* Adjust text alignment */
+  margin-top: 30px; /* Adjust top margin */
+  margin-top: 30px; /* Adjust top margin */
+  font-family: Arial, "Helvetica Neue", Arial, sans-serif; 
+}
+
+.button{
+  position: flex;
+  justify-content: left;
+  margin-top: 30px; /* Adjust top margin */
+  margin-left: 30px; /* Adjust top margin */
 }
