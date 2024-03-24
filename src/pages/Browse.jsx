@@ -191,12 +191,12 @@ const Browse = () => {
           }}
         >
           <option value="">Select a city</option>
-          <option value="toronto">Toronto</option>
-          <option value="new york">New York</option>
-          <option value="vancouver">Vancouver</option>
-          <option value="houston">Houston</option>
-          <option value="miami">Miami</option>
-          <option value="san francisco">San Francisco</option>
+          <option value="Toronto">Toronto</option>
+          <option value="New York">New York</option>
+          <option value="Vancouver">Vancouver</option>
+          <option value="Houston">Houston</option>
+          <option value="Miami">Miami</option>
+          <option value="San Francisco">San Francisco</option>
         </select>
 
         <button
@@ -225,4 +225,3 @@ const Browse = () => {
 };
 
 export default Browse;
-
