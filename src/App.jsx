@@ -10,6 +10,7 @@ import ForgotPassword from "./pages/ForgotPassword";
 import AboutUs from "./pages/AboutUs";
 import Navbar from "./components/Nav";
 import Browse from "./pages/Browse";
+import Onboarding from "./pages/Onboarding";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/browse" element={<Browse />} />
+        <Route path="/onboarding" element={<Onboarding />} />
       </Routes>
     </AuthContextProvider>
   );
