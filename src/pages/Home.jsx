@@ -1,12 +1,5 @@
-import Navbar from "../components/Nav";
-
 const Home = () => {
-  return (
-    <div className="text-center">
-      <Navbar />
-      Home Page
-    </div>
-  );
+  return <div className="text-center">Home Page</div>;
 };
 
 export default Home;

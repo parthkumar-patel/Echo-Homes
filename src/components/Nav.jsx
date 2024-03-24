@@ -2,14 +2,9 @@ import { Link } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 // import Logo from "../assets/logo.png";
 // import DefaultProfile from "../assets/default.png";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 import "../styles/nav.css";
 
-// const API_KEY = "AIzaSyCk4iCG3RB70rBv2uIdPfepGnuRMs17e6U";
-
 export default function Navbar() {
-  const navigate = useNavigate();
   const { user, logOut } = UserAuth();
 
   const handleSignOut = async () => {
