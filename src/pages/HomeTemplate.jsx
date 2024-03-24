@@ -19,7 +19,10 @@ const HomeListing = ({ listing }) => {
           <h3>Details</h3>
           <p>Location: {listing.location}</p>
           <p>Preferred length: {listing.stayLength}</p>
-          <p>Maximum guests: {listing.maxGuests}</p>
+          <p>Start date: {listing.startDate}</p>
+          <p>End date: {listing.endDate}</p>
+          <p>Bedrooms: {listing.maxGuests}</p>
+          <p>Roommates: {listing.roommates}</p>
         </div>
         <div className="amenities">
           <h4>Amenities</h4>
