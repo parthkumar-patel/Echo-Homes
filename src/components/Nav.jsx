@@ -4,6 +4,8 @@ import { UserAuth } from "../context/AuthContext";
 // import DefaultProfile from "../assets/default.png";
 import "../styles/nav.css";
 
+import echoLogo from "../images/echohome.png";
+
 export default function Navbar() {
   const { user, logOut } = UserAuth();
 
@@ -20,20 +22,62 @@ export default function Navbar() {
       <div className="container">
         <Link to="/" className="navbar-brand">
           <img
-            src="/"
+            src={echoLogo}
             alt="Logo"
-            width="30"
-            height="24"
+            width="180"
+            height="90  "
             className="d-inline-block align-text-top me-2"
           />
-          Echo Homes
         </Link>
 
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <Link to="/Fav" className="navbar">
+         
+          
+          <Link to="/about-us" className="navbar">
             <img
               src="/"
-              alt="Fav"
+              alt="About Us"
+              className="d-inline-block align-text-top ms-2"
+              id="favid"
+              style={{
+                backgroundColor: "#f2f2f2",
+                scale: "0.83",
+                backgroundRepeat: "no-repeat",
+                border: "#d8d8d8 solid",
+                borderRadius: "10px",
+                padding: "8px",
+                marginBlock: "-8px",
+                marginRight: "2px",
+                textDecoration: "none",
+              }}
+            />
+          </Link>
+
+               
+          <Link to="/about-us" className="navbar">
+            <img
+              src="/"
+              alt="FAQ"
+              className="d-inline-block align-text-top ms-2"
+              id="favid"
+              style={{
+                backgroundColor: "#f2f2f2",
+                scale: "0.83",
+                backgroundRepeat: "no-repeat",
+                border: "#d8d8d8 solid",
+                borderRadius: "10px",
+                padding: "8px",
+                marginBlock: "-8px",
+                marginRight: "2px",
+                textDecoration: "none",
+              }}
+            />
+          </Link>
+
+          <Link to="/browse" className="navbar">
+            <img
+              src="/browse"
+              alt="Browse"
               className="d-inline-block align-text-top ms-2"
               id="favid"
               style={{
@@ -49,6 +93,7 @@ export default function Navbar() {
             />
           </Link>
         </div>
+    
         <div className="nav-item dropdown">
           <a
             className="nav-link dropdown-toggle"
